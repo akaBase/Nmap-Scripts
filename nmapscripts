@@ -1,0 +1,11 @@
+#!/usr/bin/bash
+
+if [ $# -gt 1 ]; then
+	echo "Too many arguments!";
+	echo "No arguments for all scripts or a keyword to narrow down results"
+elif [ $# -eq 1 ]; then
+	locate "*.nse" | sed 's/\.[^.]*$//' | cut -d "/" -f 6 | grep $1;
+else
+	locate "*.nse" | sed 's/\.[^.]*$//' | cut -d "/" -f 6;
+fi
+
