@@ -4,9 +4,7 @@ if [ $# -gt 1 ]; then
 	echo "Too many arguments!";
 	echo "No arguments for all scripts or a keyword to narrow down results"
 elif [ $# -eq 1 ]; then
-	locate "*.nse" | sed 's/\.[^.]*$//' | rev | cut -d "/" -f 1 | rev | grep $1;
+	locate "*.nse" | rev | cut -d "/" -f 1 | rev | grep $1 | sed -e 's/.nse$//';
 else
-	locate "*.nse" | sed 's/\.[^.]*$//' | rev | cut -d "/" -f 1 | rev;
+	locate "*.nse" | rev | cut -d "/" -f 1 | rev | sed -e 's/.nse$//';
 fi
-
-
